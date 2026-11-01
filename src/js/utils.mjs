@@ -37,3 +37,9 @@ export function renderListWithTemplate(
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+
+// Get a query string parameter from the current URL.
+export function getParam(param) {
+  return new URLSearchParams(window.location.search).get(param);
+}
