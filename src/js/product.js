@@ -23,7 +23,10 @@ async function init() {
   document.getElementById("product-brand").textContent = product.Brand.Name;
   document.getElementById("product-name").textContent = product.NameWithoutBrand;
   const image = document.getElementById("product-image");
-  image.src = product.Image;
+ image.src = product.Image.replace(
+  "../images/",
+  `${import.meta.env.BASE_URL}images/`
+);
   image.alt = product.Name;
   document.getElementById("product-price").textContent = `$${product.FinalPrice}`;
   document.getElementById("product-color").textContent =
