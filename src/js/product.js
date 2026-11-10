@@ -2,7 +2,7 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import { getParam } from "./utils.mjs";
 
-const dataSource = new ProductData("tents");
+const dataSource = new ProductData();
 
 function addProductToCart(product) {
   const cart = getLocalStorage("so-cart");
@@ -20,14 +20,11 @@ async function init() {
     return;
   }
 
-  document.getElementById("product-brand").textContent = product.Brand.Name;
-  document.getElementById("product-name").textContent = product.NameWithoutBrand;
+  document.getElementById("product-brand").textContent = product.Brand?.Name ?? "";
+  document.getElementById("product-name").textContent = product.NameWithoutBrand ?? product.Name ?? "";
   const image = document.getElementById("product-image");
- image.src = product.Image.replace(
-  "../images/",
-  `${import.meta.env.BASE_URL}images/`
-);
-  image.alt = product.Name;
+ image.src = product.Images?.PrimaryLarge ?? "";
+  image.alt = product.Name ?? "Product image";
   document.getElementById("product-price").textContent = `$${product.FinalPrice}`;
   document.getElementById("product-color").textContent =
     product.Colors?.[0]?.ColorName ?? "";
