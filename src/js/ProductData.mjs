@@ -1,4 +1,4 @@
-Аfunction convertToJson(res) {
+function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
