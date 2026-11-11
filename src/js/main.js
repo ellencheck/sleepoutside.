@@ -1,8 +1,2 @@
-import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
-import { qs } from "./utils.mjs";
-
-const dataSource = new ProductData("tents");
-const listElement = qs(".product-list");
-const productList = new ProductList("Tents", dataSource, listElement);
-productList.init();
+// Product listing logic now lives in product-listing.js.
+// The home page displays category links and does not load a product list.
