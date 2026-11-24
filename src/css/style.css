@@ -671,3 +671,44 @@ body {
     font-size: 1rem;
   }
 }
+
+
+/* Remove item action in cart */
+.cart-remove-button {
+  margin-left: 0.65rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #b94a48;
+  border-radius: 5px;
+  background: #fff;
+  color: #a33b39;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cart-remove-button:hover,
+.cart-remove-button:focus-visible {
+  background: #a33b39;
+  color: #fff;
+}
+
+.cart-remove-button:focus-visible {
+  outline: 3px solid rgba(185, 74, 72, 0.25);
+  outline-offset: 2px;
+}
+
+.cart-page .cart-card__quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 650px) {
+  .cart-remove-button {
+    margin-left: 0;
+    margin-top: 0.35rem;
+  }
+}
