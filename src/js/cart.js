@@ -37,6 +37,7 @@ function cartItemTemplate({ id, item, quantity }) {
       <button type="button" class="quantity-control__button" data-action="decrease" data-id="${id}" aria-label="Decrease quantity of ${item.Name}" ${quantity === 1 ? "disabled" : ""}>−</button>
       <span class="quantity-control__value" aria-live="polite">${quantity}</span>
       <button type="button" class="quantity-control__button" data-action="increase" data-id="${id}" aria-label="Increase quantity of ${item.Name}">+</button>
+      <button type="button" class="cart-remove-button" data-action="remove" data-id="${id}" aria-label="Remove ${item.Name} from cart">Remove</button>
     </div>
     <p class="cart-card__price">$${item.FinalPrice} each</p>
   </li>`;
@@ -65,6 +66,11 @@ function updateQuantity(productId, action) {
       ? items.findLastIndex((item) => String(item.Id ?? item.Name) === productId)
       : items.map((item) => String(item.Id ?? item.Name)).lastIndexOf(productId);
     items.splice(removeIndex, 1);
+  } else if (action === "remove") {
+    const remainingItems = items.filter((item) => String(item.Id ?? item.Name) !== productId);
+    setLocalStorage("so-cart", remainingItems);
+    renderCartContents();
+    return;
   }
 
   setLocalStorage("so-cart", items);
